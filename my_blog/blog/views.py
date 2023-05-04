@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_list_or_404
+from django.shortcuts import render, get_object_or_404
 
 from .models import Post
 
@@ -14,7 +14,7 @@ def post_list(request):
 
 def post_detail(request, year, month, day, post):
     """Выводит конкретный пост"""
-    post = get_list_or_404(
+    post = get_object_or_404(
         Post,
         slug=post,
         status="published",
