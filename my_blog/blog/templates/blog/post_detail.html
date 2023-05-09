@@ -7,6 +7,9 @@
         <h1>{{ post.title }}</h1>
         <p class="date"><b>Published</b> {{ post.published_date }} by <b>{{ post.author }}</b></p>
         {{ post.text|linebreaks }}
+        <p>
+            <a href="{% url 'post_share' post|lower %}">Share this post</a>
+        </p>
     </div>
   </div>
 </div>

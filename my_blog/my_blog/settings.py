@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os
 from pathlib import Path
 
-from .keys import SITE_KEY
+from .keys import SITE_KEY, MAIL_RU_PASSWORD, MAIL_RU_POST
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -127,3 +127,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+EMAIL_HOST = 'smtp.mail.ru'
+EMAIL_PORT = 2525
+EMAIL_HOST_USER = MAIL_RU_POST
+EMAIL_HOST_PASSWORD = MAIL_RU_PASSWORD
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
