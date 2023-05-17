@@ -1,5 +1,7 @@
 from django import forms
 
+from .models import Comment
+
 
 class EmailPostForm(forms.Form):
     """Форма отправки статьи на электронную почту"""
@@ -7,3 +9,10 @@ class EmailPostForm(forms.Form):
     email = forms.EmailField()
     to = forms.EmailField()
     comment = forms.CharField(required=False, widget=forms.Textarea)
+
+
+class CommentForm(forms.ModelForm):
+    """Форма оставления комментария к посту"""
+    class Meta:
+        model = Comment
+        fields = ("name", "email", "text")
