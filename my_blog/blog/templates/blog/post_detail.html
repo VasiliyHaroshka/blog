@@ -3,19 +3,19 @@
 {% block title %}{{ post.title }}{% endblock %}
 
 {% block content %}
-<h1>{{ post.title }}</h1>
 
-<p class="date">
-  Published {{ post.published_date }} by {{ post.author }}
-</p>
+<!--post-->
+<h1>{{ post.title }}</h1>
+<button><a href="{% url 'post_list' %}">Back to main</a></button>
+<p class="date">Published {{ post.published_date }} by {{ post.author }}</p>
 {{ post.text|linebreaks }}
 <p><a href="{% url 'post_share' post.id %}">Share this post</a></p>
 
+<!--comments-->
 {% with comments.count as total_comments %}
-    <h2>
-      {{ total_comments }} comment{{ total_comments|pluralize }}
-    </h2>
+    <h2>{{ total_comments }} comment{{ total_comments|pluralize }}</h2>
 {% endwith %}
+
 {% for comment in comments %}
     <div class="comment">
       <p class="info">
@@ -26,7 +26,7 @@
     </div>
   {% empty %}
     <p>There are no comments yet.</p>
-  {% endfor %}
+{% endfor %}
 
   {% if new_comment %}
     <h2>Your comment has been added.</h2>
@@ -38,4 +38,5 @@
       <p><input type="submit" value="Add comment"></p>
     </form>
   {% endif %}
+
 {% endblock content %}

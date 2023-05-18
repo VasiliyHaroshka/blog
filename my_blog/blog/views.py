@@ -28,14 +28,14 @@ def post_list(request, tag_slug=None):
     context = {
         "page": page,
         "posts": posts,
-        "tags": tag,
+        "tag": tag,
     }
     return render(request, "blog/post_list.html", context)
 
 
 def post_detail(request, year, month, day, post):
     """Отображает выбранный пост"""
-    post = get_object_or_404(Post, slug=post,
+    post = get_object_or_404(Post, slug=post, status="published",
                              published_date__year=year, published_date__month=month, published_date__day=day)
     comments = post.comments.filter(active=True)
 

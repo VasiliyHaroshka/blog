@@ -26,8 +26,8 @@ class Post(models.Model):
     created_date = models.DateField("Дата создания", auto_now_add=True)
     updated_date = models.DateField("Дата обновления", auto_now=True)
     status = models.CharField("Статус", max_length=10, choices=STATUS_CHOICES, default="draft")
-    tags = TaggableManager()
 
+    tags = TaggableManager()
     objects = models.Manager()
     published = PublishedManager()
 
