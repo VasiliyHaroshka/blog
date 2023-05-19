@@ -1,6 +1,7 @@
 from django.core.mail import send_mail
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.shortcuts import render, get_object_or_404, redirect
+from django.db.models import Count
 
 from taggit.models import Tag
 
@@ -49,11 +50,17 @@ def post_detail(request, year, month, day, post):
             new_comment.save()
     else:
         comment_form = CommentForm()
+
+    post_tags_ids = post.tags.values_list("id", flat=True)
+    similar_posts = Post.published.filter(tags__in=post_tags_ids).exclude(id=post.id)
+    recommend_posts = similar_posts.annotate(same_tags=Count("tags")).order_by("-same_tags", "-published_date")[:2]
+
     context = {
         "post": post,
         "comments": comments,
         "new_comment": new_comment,
         "comment_form": comment_form,
+        "recommend_posts": recommend_posts,
     }
     return render(request, "blog/post_detail.html", context)
 

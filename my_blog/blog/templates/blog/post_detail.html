@@ -11,6 +11,13 @@
 {{ post.text|linebreaks }}
 <p><a href="{% url 'post_share' post.id %}">Share this post</a></p>
 
+<h2>Recommend posts:</h2>
+{% for post in recommend_posts %}
+  <p><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></p>
+{% empty %}
+  There are no similar posts
+{% endfor %}
+
 <!--comments-->
 {% with comments.count as total_comments %}
     <h2>{{ total_comments }} comment{{ total_comments|pluralize }}</h2>
