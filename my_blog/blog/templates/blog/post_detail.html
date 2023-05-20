@@ -1,4 +1,5 @@
 {% extends "blog/base.html" %}
+{% load blog_tags %}
 
 {% block title %}{{ post.title }}{% endblock %}
 
@@ -8,7 +9,7 @@
 <h1>{{ post.title }}</h1>
 <button><a href="{% url 'post_list' %}">Back to main</a></button>
 <p class="date">Published {{ post.published_date }} by {{ post.author }}</p>
-{{ post.text|linebreaks }}
+{{ post.text|markdown }}
 <p><a href="{% url 'post_share' post.id %}">Share this post</a></p>
 
 <h2>Recommend posts:</h2>
