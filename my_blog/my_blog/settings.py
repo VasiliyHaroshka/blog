@@ -40,9 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
+
     'blog.apps.BlogConfig',
     'taggit',
-    'markdown',
 ]
 
 MIDDLEWARE = [
@@ -136,3 +138,5 @@ EMAIL_HOST_USER = MAIL_RU_POST
 EMAIL_HOST_PASSWORD = MAIL_RU_PASSWORD
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
+
+SITE_ID = 1
