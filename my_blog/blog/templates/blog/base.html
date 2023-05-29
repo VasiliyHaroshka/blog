@@ -3,6 +3,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <h1>
+    <a href="{% url 'post_list' %}">My Blog</a>
+    <button class="button"><a href="{% url 'search' %}">Search post</a></button>
+  </h1>
   <title>{% block title %} {% endblock title %}</title>
   <link href="{% static 'blog/css/blog.css' %}" rel="stylesheet">
 </head>
