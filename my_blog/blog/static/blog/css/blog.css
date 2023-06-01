@@ -2,10 +2,12 @@ body {
     margin:0;
     padding:0;
     font-family:helvetica, sans-serif;
+    background: url(../../blog/images/bg.jpg);
+    background-attachment: fixed;
 }
 
 a {
-    color:#00abff;
+    color:#00008B;
     text-decoration:none;
 }
 
@@ -30,14 +32,14 @@ h2 {
     float:right;
     width:30%;
     padding:10px;
-    background:#efefef;
+    background: url(../../blog/images/bg_post.png) no-repeat;
     height:100%;
 }
 
 p.date {
-    color:#ccc;
+    color:#00008B;
     font-family: georgia, serif;
-    font-size: 12px;
+    font-size: 14px;
     font-style: italic;
 }
 
@@ -81,6 +83,7 @@ input[type=submit] {
 /* comments */
 .comment {
     padding:10px;
+    border-color: black,
 }
 .comment:nth-child(even) {
     background:#efefef;
@@ -107,3 +110,7 @@ input[type=submit] {
 }
 
 .button:hover {opacity: 1}
+
+.post {
+    background: url(../../blog/images/bg_post.png);
+}
